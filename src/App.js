@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import React, {useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
+import Login from './scenes/Login';
+import Signup from './scenes/Signup';
+import Welcome from './scenes/Welcome';
+import ArtCard from "./componets/ArtCard"
 
 function App() {
+
+  useEffect(() => {
+    console.log('here is my useEffect and user', 'userName')
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Routes>
+      <Route path='/login' element={<Login setUser={'setUsers'} user={'usersName'} />} />
+      <Route path='/signup' element={<Signup setUser={'setUsers'} />} />
+      {/* <Route path='/' element={'user' ? <Welcome user={'user'} /> : <Login setUser={'setUser'} />} /> */}
+      <Route path='/' element={<ArtCard />} />
+    </Routes>
+  )
 }
 
-export default App;
+export default App
